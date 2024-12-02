@@ -57,3 +57,4 @@ summary(fit)
 fit2 <- glm(finance ~ mkting + production + chairman + compliance, data=ceo_diary); 
 summary(fit2)
 #made my own linear model
+##test123
