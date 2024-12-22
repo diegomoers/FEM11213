@@ -26,6 +26,7 @@ summary(ceo_diary["id"])
 ##par(mar=c(9, 3 ,1,1))
 ##barplot(prop.table(table(ceo_diary$type)), las=2)
 ##dev.off()
+
 #copied from slides but it doesn't work bc I don't have a folder called figs, so I will just output it into my directory:
 png(file="FEM11213/WEEK1/ceotypes.png", width=800, height=300)
 par(mar=c(9, 3 ,1,1))
