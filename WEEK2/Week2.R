@@ -14,7 +14,17 @@ var_browserspend
 sqrt(var_browserspend)
 # so in the frequentist approach, we get a fixed standard deviation of 80.3861
 
-#now adopting the bootstrap method:
+#for bootstrapping, it's crucial for replace=TRUE. otherwise the mean of each bootstrap sample is going to equal the "population" mean.
+B <- 1000
+mub <- c()
+for (b in 1:1000){
+  samp_b <- sample.int(nrow(browserdata), replace=FALSE)
+  mub <- c(mub, mean(browserdata$spend[samp_b]))
+}
+sd(mub) #this returns zero
+#as expected, bootstrapping (even 1k times) without replacement yields no uncertainty
+
+#now adopting the bootstrap method with replacement:
 B <- 1000
 mub <- c()
 for (b in 1:1000){
@@ -23,8 +33,7 @@ for (b in 1:1000){
 }
 sd(mub)
 #however if we bootstrap, the standard deviation (and the variance) change each time because the samples are randomly selected each time
-sort(samp_b)[1:10]
-#this command shows us the first 10 smallest values in the 1000 randomly selected samples (With repetition). this obviously also changes each time we run the bootstrap.
+sort(samp_b)[1:10] #this command shows us the first 10 smallest values in the 1000 randomly selected samples (with repetition). this obviously also changes each time we run the bootstrap.
 
 B2 <- 100
 mub2 <- c()
@@ -61,6 +70,8 @@ legend("topright",
        col=c("blue", "red", "green"),
        lwd=2)
 dev.off()
+#looks like B=1000 has the most consistent graph, which is to be expected through repeated sampling.
+
 
 png("/Users/diegomoers/Desktop/EUR/BLOK2/Data and HR Analytics/FEM11213/WEEK2/hdist1.png", width=700, height=500)
 h <- hist(mub)
