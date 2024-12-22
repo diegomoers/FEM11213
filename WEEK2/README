@@ -1,0 +1,10 @@
+1. Compared the frequentist uncertainty to bootstrap sampling uncertainty, mainly to see how the estimate changes when we sample with replacement.
+  - sampling without replacement yields no uncertainty
+2. I tried different bootstrap sizes (1000, 100, and 10) just to watch how the standard deviation stabilizes with more resampling.
+  I made distribution plots (saved as bootstrap_distributions.png) to visualize how varying B affects the shape of the bootstrapped means. The more bootstrapping samples we did, the curve seemed to converge to a certain point. The 1000 and 100 bootstrap samples are not significantly different.
+3. To answer the question " What do the diff(h$mids[1:2]) or length(mub) commands do?" posted on the slides, I edited the code (graphs hdist1.png, hdist2.png, hdist3.png) to remove these lines and saw that both terms are needed to properly scale the normal line to the histogram.
+4. I experimented with the Benjamini-Hochberg algorithm under different q-values (0.1, 0.05, and 0.01) for both the browser data and semiconductor data. 
+  - for browser data: BHA1.png, BHA2.png, BHA3.png
+  - for semiconductor data: BHA1_semicond.png, BHA2_semicond.png, BHA3_semicond.png 
+  - these showed that stricter q-values reject fewer hypotheses, and that’s even more pronounced when there are many predictors.
+  - what is not yet immediately clear to me is where the q value comes from. if it is arbitrary, then should you consider the number of hypotheses you want to test to decide on q?
