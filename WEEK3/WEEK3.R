@@ -31,6 +31,7 @@ glm(log(sales) ~ log(price)*brand*feat, data=ojdata)
 
 
 
+
 ################################################################################
 ################################################################################
 ############################### SLIDE 10 - 16 ##################################
@@ -71,7 +72,7 @@ print(rf_model)
 #RANDOM FOREST MODEL:
 print(rf_model)
 rf_predictions[, 2]
-#note, random forest seems to be dropping some rows... so i'm going to compare the rf model to the glm one in terms of percentage accuracy
+#note, random forest seems to be dropping some rows... so I'm going to compare the RF model to the GLM one in terms of percentage accuracy
   #it reports the out-of-bag error rate if 4.97%
   #it predicts email 1 is spam 100% an email 4000 is spam 2%
 
@@ -79,19 +80,20 @@ rf_predictions[, 2]
 print(confusion_matrix)
 predict(spammy, newdata = emaildata[c(1,4000),], type="response")
   #if you do the math, the accuracy for the GLM model is 93.7%, so it has an error rate of 6.3%, which is higher than the random forest model!!
-  #it predicts email 1 is spam 88.4% an email 4000 is spam 15%, so it seems like it is more uncertaint he the rf model...
+  #it predicts email 1 is spam 88.4% an email 4000 is spam 15%, so it seems like it is more uncertain than the RF model...
 
-#interpreting the variables is also very different between the glm and rf model. the glm model has interpretable coefficients:
+#interpreting the variables is also very different between the GLM and RF model. the GLM model has interpretable coefficients:
   coef(spammy)["word_free"]; exp(coef(spammy)["word_free"])
   #thus the the word free increases the odds of email being spam by a factor of 4.68
 
-  #whereas the rf model assigns "importance scores":
+  #whereas the RF model assigns "importance scores":
   importance_scores <- importance(rf_model)
   importance_scores["word_free", ]
-  #because mean decrease accuracy and mean decrease gini are high, this just tells us the word "free" is an important coefficient for predicting spam/non-spam
-  #but i don't see an interpretable coeffficient like in glm
+  #because mean decrease accuracy and mean decrease GINI are high, this just tells us the word "free" is an important coefficient for predicting spam/non-spam
+  #but I don't see an interpretable coefficients like in GLM
 
 
+  
   
   
   
@@ -129,7 +131,7 @@ D_null <- summary(spammy_null)$deviance
 print(D_null)
 
 
-#using this i can construct my own R^2 estimate!!
+#using this i can construct my own R^2 estimate!
 #given that R^2= 1 - (dev(fitted model) - dev(overfit model))/dev(nullmodel)
 
 R2_estimate <- 1 - (D_fit)/(D_null)
