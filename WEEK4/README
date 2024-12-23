@@ -1,0 +1,22 @@
+1. I practised K-fold cross validation and tested to see what happens with different Ks:
+  - Made two plots (R2_distribution_10_kfolds.png and R2_distribution_50_kfolds.png) running it with 10 and 50 folds
+  - R² was always negative no matter what, not just with the 10 folds from slides
+  - However, when I tried a large number for K (K=50), I noticed the last fold only had 7 observations while others had 30
+      * ChatGPT suggested weighing the R² based on fold sizes, got -2.00 which matches my graph but is pretty different from slides (maybe should have used more folds?)
+
+2. The slides mention backwards stepwise regression but do not actually run one. I wanted to compare it to the forward:
+  - I first tried a BSR with all coefficients, but my computer almost exploded
+  - Instead I limited to first 100 variables instead
+  - Both methods gave identical coefficients and deviance in the end
+    * But backwards took way longer, especially at start when dealing with 100 variables (65 steps)
+    * Forward was way more efficient (only ~37 steps)
+  - Made a graph showing how much longer backwards it took to get to the same spot (stepwise_regression_compare.png)
+
+3. Wanted to test what different penalization functions do to coefficients:
+  - Compared LASSO vs ridge penalties
+  - LASSO zeroed down to 206 coefficients, biggest one was 1.14
+  - Ridge kept all 1000 variables but shrunk them more (biggest only 0.67)
+  - As exepcted, ridge was more forgiving about zeroing coefficients (makes sense theoretically)
+  - Made comparison plots in LASSOvRIDGE.png
+
+Note: I tried using gamlr package but it would not work for me, so I used glmnet instead. According to R, it is also a valid regularization package.
