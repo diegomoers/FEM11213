@@ -30,8 +30,6 @@ glm(log(sales) ~ log(price)*brand*feat, data=ojdata)
 
 
 
-
-
 ################################################################################
 ################################################################################
 ############################### SLIDE 10 - 16 ##################################
@@ -91,12 +89,6 @@ predict(spammy, newdata = emaildata[c(1,4000),], type="response")
   importance_scores["word_free", ]
   #because mean decrease accuracy and mean decrease GINI are high, this just tells us the word "free" is an important coefficient for predicting spam/non-spam
   #but I don't see an interpretable coefficients like in GLM
-
-
-  
-  
-  
-  
   
 ################################################################################
 ################################################################################
