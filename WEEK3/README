@@ -1,0 +1,15 @@
+1. Copied the code from slides to run basics of regression, not much new. Wrote some code to see how R assigned categories 1s and 0s, and confirmed there was no mistake in the data
+  - interpreted those coefficents
+3. Compared the GLM to a Random Forest model (rf_model) for email classification.
+  - for the glm model:
+      * Accuracy was 93.7% (error rate: 6.3%).
+      * Predictions: Email 1 had an 88.4% probability of being spam; Email 4000 had 15%.
+  - for the rf model:
+      * Random Forest had higher accuracy (95.3%) and more confident predictions 
+      * Predictions:  Email 1: 100% spam, Email 4000: 2%
+- Random Forest had higher accuracy and more confident predictions, but GLM offered interpretable coefficients ("free" increased spam odds by 4.68x), while RF provided importance scores ("free" is a key predictor).
+4. Ran a fully saturated (overfit) model using only the first 100 rows of email.csv.
+  - tried running an overfit model on the entire dataset, but my computer almost exploded
+  - Residual deviance was nearly zero, as expected.
+5. Explored null models to understand baseline deviance and used it to benchmark fitted and overfit models.
+5. Created an R2R2-like estimate, which was terrible due to only using the first 100 data rows.
