@@ -1,0 +1,21 @@
+1. Tested KNN's sensitivity to k
+  - Ran a KNN on the fgl dataset to see how changing k affects accuracy.
+  - Tried k = 1, 3, 5, 7, 11, 30... 100 and plotted accuracy (see K-neighbours_sensitivity_K.png)
+    * Generally, smaller k values worked better—more focused predictions.
+    * Larger k's (especially 100) had a major drop in accuracy. However, in this case neighbors were only identifiable by 1 aspect... hence the next experiment.
+  - Overall pretty intuitive
+
+2. Changed classification rule for the fgl dataset to see how FPR and FNR changed
+   - Plotted FPR/FNR trade-offs for logistic regression (see classification_rules_FPR_FNR.png).
+
+3. Logistic Regression vs KNN
+  - Given that in class we ran a logistic regression (gamlr) on the credit dataset, I wanted to test if I could recreate it but using the KNN algorithm from the last slide.
+  - Claude AI struggled to understand the task (because it amde assumptions on the data)
+    * Once data was clarified, the code would run
+  - Used 5-fold CV to find optimal k = 13 for KNN.
+  - Generated ROC curves for KNN in-sample (ROC_KNN_insample.png) and out-of-sample (ROC_KNN_outsample.png).
+  - Results for cutoff 1/5:
+        Logistic Regression: FPR = 60.6%, FNR = 7.7%.
+        KNN: FPR = 59.1%, FNR = 8.6%.
+  - Surprisingly, my KNN model came VERY close to logistic regression, but was slightly worse overall. I think the fact that it came so close is surprising, since I was under the impression that KNN was simply not going to work
+  - That being said, the ROC_KNN_outsample.png shows that not all points on the ROC curve are above the 45 degree line... so I do not think the KNN algorithm is any more relaible than the logistic model the slides ran
