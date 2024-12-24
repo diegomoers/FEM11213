@@ -1,0 +1,20 @@
+This was by far the most difficult week, because I spent more time understanding the code in the slides than experimenting. Nevertheless, I tried to do 1 for each part:
+
+1. Abortion Controls Study
+  - Here I tested the d coefficient we got from the naive model by trying two simpler combinations
+    * one with only time and state FE
+        1. d = -0.122
+    * one with more limited controls (pop/prison/police/unemployment)
+        1. d = -0.385
+  - Which shows the importance of time and state fixed effects for causal inference for this study
+
+2. Beer Price Elasticity Analysis
+  - I asked Claude AI and ChatGPT to çlassify the Dominick's beer data into premium/regular categories
+     Note: these are ChatGPTs expert opinions, not mine (nor do I necessarily agree with all) 
+      * Premium: imports (Heineken, Corona), craft beers (Samuel Adams), specialty brands
+      * Regular: mass market (Budweiser, Miller) and budget brands
+      A more comprehensive list is in the code
+  - Premium beers: -0.89 elasticity (0.89% sales drop per 1% price increase)
+  - Regular beers: -0.47 elasticity (0.47% sales drop per 1% price increase)
+  - I would have thought that the cheaper beer would be more elastic, but it is in fact premium beers that show higher price sensitivity?
+      * Premium beer buyers more price-sensitive than expected, which suggests high substitutability between premium brands, but not for the people who are already buying the cheap beer.
