@@ -133,8 +133,7 @@ hist(gamfull, main="", xlab="elasticity", col="darkgrey", freq=FALSE)
 print(upc$DESCRIP)
 #and asked it to identify premium beers from non-premium beers.
 #ChatGPT recommended the following groups:
-# Create a vector of premium beer patterns
-# Create premium indicators based on our list of premium brands
+
 premium_indicators <- grepl(paste(c(
   # Import/European Premium
   "HEINEKEN", "AMSTEL", "CORONA", "BECK", "GROLSCH", "PILSNER URQUELL",
@@ -166,6 +165,7 @@ results <- data.frame(
   Beer_Type = c("Premium", "Regular"),
   Price_Elasticity = c(coef(premium_model)["lp"], coef(regular_model)["lp"]))
 print(results)
+
 #this code suggests that:
   # Premium beers: -0.89 elasticity (0.89% drop in sales for 1% price increase)
   # Regular beers: -0.47 elasticity (0.47% drop in sales for 1% price increase)
